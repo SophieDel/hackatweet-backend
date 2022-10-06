@@ -1,8 +1,5 @@
 require('dotenv').config();
-<<<<<<< HEAD
 require('./models/connection');
-=======
->>>>>>> e3250e167f40c2608eafdc53fff33abff9ab7a5d
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');

@@ -13,11 +13,7 @@
     "dotenv": "^16.0.3",
     "express": "~4.16.1",
     "mongoose": "^6.6.5",
-<<<<<<< HEAD
-    "morgan": "~1.9.1"
-=======
     "morgan": "~1.9.1",
     "uid2": "^1.0.0"
->>>>>>> e3250e167f40c2608eafdc53fff33abff9ab7a5d
   }
 }

@@ -13,18 +13,19 @@ router.get("/", (req, res) => {
 router.post("/new", (req, res) => {
   console.log("req.body.tweet =>", req.body.tweet)
   const rawTweet = req.body.tweet;
-  const hashtagPattern = /#[a-z0-9_]+/gi;
-  // Isoler les hashtages du tweet
-  const hashtagsArray = rawTweet.match(hashtagPattern);
-  // Supprimer les hashtag du content
-  const content = hashtagsArray ? rawTweet.split(" ").filter((e) => !hashtagsArray.includes(e)).join(" ") : rawTweet
+  // const hashtagPattern = /#[a-z0-9_]+/gi;
+  // Mettre le tweet sous forme d'array
+  const contentInArray = rawTweet.split(" ")
+  // Isoler les hashtage dans le Tweet
+  const hashtagPattern = /[#\w*]/
+  const hashtagsArray = (contentInArray.filter(e => e[0] == '#')).map(e => e.toLowerCase())
   // Chaque hashtag est unique
   const hashtags = hashtagsArray ? [
-    ...new Set(hashtagsArray.map((e) => e.slice(1).toLowerCase()))
+    ...new Set(hashtagsArray)
   ] : [];
   const newTweet = new Tweet({
     rawTweet: rawTweet,
-    content: content,
+    contentInArray: contentInArray,
     hashtags: hashtags
   });
   newTweet.save().then(data => {
